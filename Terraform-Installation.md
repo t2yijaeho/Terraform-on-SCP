@@ -45,11 +45,17 @@ cat <<EOF >~/.scp/credentials.json
 EOF
 ```
 
-### 1.1.3 Verify SCP IAM Configuration
+### 1.1.3 Verification of SCP IAM Configuration
+
+To verify the configuration of SCP IAM (Secure Cloud Protocol Identity and Access Management) settings, follow these steps
+
+Execute the following command to view the contents of the config.json file
 
 ```Bash
 cat ~/.scp/config.json
 ```
+
+The output should be similar to the following
 
 ```Bash
 ubuntu@SCP:~$ cat ~/.scp/config.json
@@ -61,9 +67,13 @@ ubuntu@SCP:~$ cat ~/.scp/config.json
 }
 ```
 
+Next, execute the following command to view the contents of the credentials.json file
+
 ```Bash
 cat ~/.scp/credentials.json
 ```
+
+The output should be similar to the following
 
 ```Bash
 ubuntu@SCP:~$ cat ~/.scp/credentials.json
@@ -74,13 +84,15 @@ ubuntu@SCP:~$ cat ~/.scp/credentials.json
 }
 ```
 
-## 1.2 Install Terraform
+## 1.2 Installation of Terraform
 
 > [Install Terraform on Linux (Ubuntu/Debian)](https://developer.hashicorp.com/terraform/downloads)
 
-### 1.2.1 Ensure gnupg, software-properties-common packages installed
+To install Terraform on your Linux system, please follow the steps below:
 
-- Use these packages to verify HashiCorp's GPG signature and install HashiCorp's Debian package repository
+### 1.2.1 Verify Installation Prerequisites
+
+Ensure that the `gnupg` and `software-properties-common` packages are installed on your system. These packages are required for verifying HashiCorp's GPG signature and installing HashiCorp's Debian package repository. Use the following command to install them
 
 ```Bash
 sudo apt update && sudo apt install -y gnupg software-properties-common
@@ -90,7 +102,7 @@ sudo apt update && sudo apt install -y gnupg software-properties-common
 
 >[HashiCorp GPG key](https://www.hashicorp.com/security) for [apt](https://en.wikipedia.org/wiki/APT_(software)) package manager
 
-- Install the HashiCorp GPG key
+To install the HashiCorp GPG key, run the following commands
 
 ```Bash
 wget -O- https://apt.releases.hashicorp.com/gpg | \
@@ -98,7 +110,7 @@ gpg --dearmor | \
 sudo tee /usr/share/keyrings/hashicorp-archive-keyring.gpg > /dev/null
 ```
 
-- Verify the GPG key
+To verify the GPG key, execute the following command
 
 ```Bash
 gpg --no-default-keyring \
@@ -106,7 +118,9 @@ gpg --no-default-keyring \
 --fingerprint
 ```
 
-### 1.2.3 Add the official HashiCorp repository
+### 1.2.3 Add the Official HashiCorp Repository
+
+Add the official HashiCorp repository to your system using the following command
 
 ```Bash
 echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] \
@@ -114,33 +128,35 @@ https://apt.releases.hashicorp.com $(lsb_release -cs) main" | \
 sudo tee /etc/apt/sources.list.d/hashicorp.list > /dev/null
 ```
 
-### 1.2.4 Update and install Terraform
+### 1.2.4 Update and Install Terraform
 
 >[APT Packages for Debian and Ubuntu](https://developer.hashicorp.com/terraform/cli/install/apt)
 
-- Download the package information from HashiCorp and install Terraform from the new repository
+To download the package information from HashiCorp and install Terraform from the new repository, run the following command
 
 ```Bash
 sudo apt update && sudo apt install -y terraform
 ```
 
-### 1.2.5 Terraform auto completion
+### 1.2.5 Enable Terraform Auto-Completion
 
 >[Install Terraform with Shell Autocompletion](https://learn.hashicorp.com/tutorials/terraform/install-cli#install-terraform-with-shell-autocompletion)
 
-- Ensure that a config file exists
+To enable auto-completion for Terraform in your shell, follow these steps
+
+Ensure that the .bashrc file exists by executing the following command
 
 ```Bash
 touch ~/.bashrc
 ```
 
-- Install the autocomplete plugin
+Install the Terraform autocomplete plugin with the following command
 
 ```Bash
 terraform -install-autocomplete
 ```
 
-- Restart the shell
+Restart the shell for the changes to take effect
 
 ```Bash
 exec bash
