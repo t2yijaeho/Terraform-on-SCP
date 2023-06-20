@@ -1,4 +1,4 @@
-# 1. Install Terraform for SCP
+# 1. Install Terraform for SCP on Ubuntu
 
 To begin working with the Samsung Cloud Platform (SCP) using Terraform, you need to follow a few installation steps. Below are the instructions to set up the necessary components
 
@@ -45,7 +45,7 @@ cat <<EOF >~/.scp/credentials.json
 EOF
 ```
 
-### 1.1.3 Verification of SCP IAM Configuration
+### 1.1.3 Verify SCP IAM Configuration
 
 To verify the configuration of SCP IAM (Secure Cloud Protocol Identity and Access Management) settings, follow these steps
 
@@ -231,13 +231,13 @@ terraform version
 ```
 
 ```sh
-ubuntu@T3XBC:~$ terraform version 
+ubuntu@SCP:~$ terraform version 
 Terraform v1.5.0
 on linux_amd64
 ```
 
 ```sh
-ubuntu@T3XBC:~$ terraform version -json
+ubuntu@SCP:~$ terraform version -json
 {
   "terraform_version": "1.5.0",
   "platform": "linux_amd64",
